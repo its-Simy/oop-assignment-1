@@ -3,7 +3,8 @@
 • 1 pound sterling = 20 shillings
 • 1 shilling = 12 pence (“pence” is the plural of “penny”) 
 • 1 penny = 4 farthings
-Write a program (ShowMeTheMoney.java) that reads in a single integer, the number of farthings, and then prints a sequence of integers that represents the fewest number of each bill or coin needed to represent that amount, starting with the largest denomination. (Hint: use the integer division and the % operator.)
+Write a program (ShowMeTheMoney.java) that reads in a single integer, the number of farthings, and then prints a sequence of integers that represents the fewest number of each bill or coin needed to represent that amount, starting with the largest denomination.
+(Hint: use the integer division and the % operator.)
 For example, if the argument is 2563 farthings, then the program prints 2 pounds sterling, 13 shillings, 4 pence and 3 farthings because 2,563 farthings is equivalent to 2 pounds sterling, 13 shillings, 4 pence and 3 farthings.
 Examples:
 Enter in the number of farthings: 2563
@@ -24,6 +25,29 @@ Shilling 15
 Penny 10
 Farthings 2
  */
+import java.util.Scanner;
 public class ShowMeTheMoney {
+    public static void main(String[]args){
+
+
+        System.out.println("Enter in the number of farthings: ");
+        Scanner input = new Scanner(System.in);
+        int total = input.nextInt();
+
+        int pound = total / 960;
+        if(pound > 0)
+            total = total - (pound * 960);
+        int shilling = total / 48;
+        if(shilling > 0)
+            total = total - (shilling * 48);
+        int penny = total / 4;
+
+        int farthings = total % (penny * 4);
+
+
+        System.out.println("Pound Sterling : " + pound + "\n" + "Shilling: " + shilling + "\n" + "Penny: " + penny + "\n" + "Farthings: " + farthings);
+
+
+    }
     
 }
